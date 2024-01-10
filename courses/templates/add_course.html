@@ -1,0 +1,91 @@
+<!-- templates/course_registration/add_course.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: auto;
+        }
+
+        input[type="number"] {
+            width: auto;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Course</title>
+</head>
+-->
+
+<body style="background:#98AFC7">
+<h1>Add Course</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="course_id">Course ID: </label>
+        <input type="text" name="course_id" required><br>
+        <label for="course_title">Course Title:</label>
+        <input type="text" name="course_title" required><br>
+        <label for="instructor">Instructor: </label>
+        <input type="text" name="instructor" required><br>
+        <label for="capacity">Capacity: </label>
+        <input type="number" name="capacity" min="1" required><br><br>
+        <br>
+        <br>
+        <button type="submit">Add Course</button>
+    </form>
+
+<a href="{% url 'course_list' %}">Back to Course List</a>
+</body>
+</html>

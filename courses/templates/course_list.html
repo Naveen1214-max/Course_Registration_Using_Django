@@ -1,0 +1,91 @@
+<!-- templates/course_registration/course_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course List</title>
+</head>
+-->
+
+<body style="background:#92C7C7" >
+<center>
+<h1 >Course List</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Title</th>
+            <th>Instructor</th>
+            <th>Total Capacity</th>
+            <th>Open Seats</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.course_id }}</td>
+            <td>{{ course.course_title }}</td>
+            <td>{{ course.instructor }}</td>
+            <td>{{ course.capacity }}</td>
+            <td>{{ course.open_seats }}</td>
+            <td>
+                <a href="{% url 'drop_student' course.course_id %}">Add </a> &nbsp;|&nbsp;
+                <a href="{% url 'add_student' course.course_id %}">Delete </a> &nbsp;|&nbsp;
+                <a href="{% url 'delete_course' course.course_id %}">Drop </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'add_course' %}">Add Course</a>
+</center>
+</body>
+</html>
